@@ -1,7 +1,7 @@
 package org.example.orderservice.dto;
 
 import lombok.Builder;
-import org.example.orderservice.OrderStatus;
+import org.example.orderservice.enums.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

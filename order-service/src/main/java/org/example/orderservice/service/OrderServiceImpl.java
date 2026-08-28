@@ -1,7 +1,7 @@
 package org.example.orderservice.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.orderservice.OrderStatus;
+import org.example.orderservice.enums.OrderStatus;
 import org.example.orderservice.dto.CreateOrderRequest;
 import org.example.orderservice.dto.OrderResponse;
 import org.example.orderservice.entity.OrderEntity;

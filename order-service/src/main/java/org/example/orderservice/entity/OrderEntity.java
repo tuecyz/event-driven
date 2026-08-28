@@ -3,7 +3,7 @@ package org.example.orderservice.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.orderservice.OrderStatus;
+import org.example.orderservice.enums.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package org.example.orderservice;
+package org.example.orderservice.enums;
 
 public enum OrderStatus {
     PENDING,
