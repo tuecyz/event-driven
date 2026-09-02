@@ -21,7 +21,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderResponseDTO createOrder(CreateOrderRequestDTO request) {
-
         OrderEntity order = new OrderEntity();
 
         order.setCustomerId(request.getCustomerId());
@@ -47,9 +46,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderResponseDTO getOrderById(Long id) {
-
         OrderEntity order = orderRepository.findById(id)
-                .orElseThrow(() -> new OrderNotFoundException("Order not found: " + id));
+                .orElseThrow(() -> new OrderNotFoundException("Sipariş bulunamadı: " + id));
 
         return mapToResponse(order);
     }

@@ -30,7 +30,7 @@ class OrderServiceTest {
     private OrderRepository orderRepository;
 
     @InjectMocks
-    private OrderService orderService;
+    private OrderServiceImpl orderService;
 
     private CreateOrderRequestDTO request;
     private OrderEntity savedOrder;
