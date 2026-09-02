@@ -61,9 +61,7 @@ class OrderControllerTest {
                 .build();
     }
 
-    // ==========================================
     // 1. POST /orders - Başarılı Senaryo
-    // ==========================================
     @Test
     @DisplayName("POST /api/orders - Geçerli istek ile 201 Created ve sipariş bilgisi dönmeli")
     void shouldCreateOrder_WhenRequestIsValid() throws Exception {
@@ -78,9 +76,7 @@ class OrderControllerTest {
                 .andExpect(jsonPath("$.quantity").value(3));
     }
 
-    // ==========================================
     // 2. POST /orders - Validation Testleri
-    // ==========================================
     @Test
     @DisplayName("POST /api/orders - Eksik veya geçersiz alanlar ile 400 Bad Request dönmeli")
     void shouldReturnBadRequest_WhenValidationFails() throws Exception {
@@ -99,9 +95,7 @@ class OrderControllerTest {
                 .andExpect(jsonPath("$.validationErrors.totalPrice").exists());
     }
 
-    // ==========================================
     // 3. GET /orders - Tüm Siparişleri Listeleme
-    // ==========================================
     @Test
     @DisplayName("GET /api/orders - Tüm siparişleri 200 OK ile liste olarak dönmeli")
     void shouldGetAllOrders() throws Exception {
@@ -115,9 +109,7 @@ class OrderControllerTest {
                 .andExpect(jsonPath("$[0].id").value(10L));
     }
 
-    // ==========================================
     // 4. GET /orders/{id} - Başarılı Senaryo
-    // ==========================================
     @Test
     @DisplayName("GET /api/orders/{id} - Kayıt mevcutsa 200 OK ve siparişi dönmeli")
     void shouldGetOrderById_WhenOrderExists() throws Exception {
@@ -131,9 +123,7 @@ class OrderControllerTest {
                 .andExpect(jsonPath("$.status").value("PENDING"));
     }
 
-    // ==========================================
     // 5. GET /orders/{id} - 404 Bulunamadı Testi
-    // ==========================================
     @Test
     @DisplayName("GET /api/orders/{id} - Kayıt yoksa GlobalExceptionHandler üzerinden 404 Not Found dönmeli")
     void shouldReturn404_WhenOrderDoesNotExist() throws Exception {
@@ -143,7 +133,7 @@ class OrderControllerTest {
 
         mockMvc.perform(get("/api/orders/{id}", nonExistingId)
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound()) // 404 Durum Kodu doğrulaması
+                .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.status").value(404))
                 .andExpect(jsonPath("$.message").value("Sipariş bulunamadı. ID: " + nonExistingId));
     }
