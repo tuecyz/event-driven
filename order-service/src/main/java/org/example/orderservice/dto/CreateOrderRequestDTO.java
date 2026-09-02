@@ -1,5 +1,6 @@
 package org.example.orderservice.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -9,19 +10,24 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
+@Schema(description = "Sipariş oluşturma istek şeması")
 public class CreateOrderRequestDTO {
 
-    @NotNull(message = "Müşteri ID boş olamaz.")
+    @NotNull
+    @Schema(description = "Siparişi veren müşterinin benzersiz ID'si", example = "101")
     private Long customerId;
 
-    @NotNull(message = "Ürün ID boş olamaz.")
+    @NotNull
+    @Schema(description = "Satın alınacak ürünün benzersiz ID'si", example = "5002")
     private Long productId;
 
-    @NotNull(message = "Ürün adedi boş olamaz.")
-    @Min(value = 1, message = "Ürün adedi en az 1 olmalıdır.")
+    @NotNull
+    @Min(1)
+    @Schema(description = "Satın alınacak ürün adedi", example = "3")
     private Integer quantity;
 
-    @NotNull(message = "Toplam fiyat boş olamaz.")
-    @DecimalMin(value = "0.0", inclusive = false, message = "Toplam fiyat 0'dan büyük olmalıdır.")
+    @NotNull
+    @DecimalMin(value = "0.0", inclusive = false)
+    @Schema(description = "Siparişin toplam fiyat tutarı", example = "1250.50")
     private BigDecimal totalPrice;
 }

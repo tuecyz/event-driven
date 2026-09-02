@@ -1,5 +1,6 @@
 package org.example.orderservice.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.orderservice.dto.CreateOrderRequestDTO;
@@ -12,8 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/orders")
 @RequiredArgsConstructor
+@RequestMapping("/api/orders")
+@Tag(name = "Sipariş Yönetimi", description = "Sipariş oluşturma ve yönetim işlemlerini içerir.")
 public class OrderController {
 
     private final OrderService orderService;
@@ -27,13 +29,11 @@ public class OrderController {
 
     @GetMapping
     public ResponseEntity<List<OrderResponseDTO>> getAllOrders() {
-
         return ResponseEntity.ok(orderService.getAllOrders());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<OrderResponseDTO> getOrderById(@PathVariable Long id) {
-
         return ResponseEntity.ok(orderService.getOrderById(id));
     }
 }
