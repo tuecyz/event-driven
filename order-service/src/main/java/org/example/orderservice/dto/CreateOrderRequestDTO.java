@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-public class CreateOrderRequest {
+public class CreateOrderRequestDTO {
 
     @NotNull(message = "Müşteri ID boş olamaz.")
     private Long customerId;

@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Getter
 @Builder
-public class OrderResponse {
+public class OrderResponseDTO {
 
     private Long id;
 

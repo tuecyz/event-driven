@@ -2,8 +2,8 @@ package org.example.orderservice.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.orderservice.enums.OrderStatus;
-import org.example.orderservice.dto.CreateOrderRequest;
-import org.example.orderservice.dto.OrderResponse;
+import org.example.orderservice.dto.CreateOrderRequestDTO;
+import org.example.orderservice.dto.OrderResponseDTO;
 import org.example.orderservice.entity.OrderEntity;
 import org.example.orderservice.exception.OrderNotFoundException;
 import org.example.orderservice.repository.OrderRepository;
@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
 
     @Override
-    public OrderResponse createOrder(CreateOrderRequest request) {
+    public OrderResponseDTO createOrder(CreateOrderRequestDTO request) {
 
         OrderEntity order = new OrderEntity();
 
@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderResponse> getAllOrders() {
+    public List<OrderResponseDTO> getAllOrders() {
 
         return orderRepository.findAll()
                 .stream()
@@ -46,7 +46,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderResponse getOrderById(Long id) {
+    public OrderResponseDTO getOrderById(Long id) {
 
         OrderEntity order = orderRepository.findById(id)
                 .orElseThrow(() -> new OrderNotFoundException("Order not found: " + id));
@@ -54,9 +54,9 @@ public class OrderServiceImpl implements OrderService {
         return mapToResponse(order);
     }
 
-    private OrderResponse mapToResponse(OrderEntity order) {
+    private OrderResponseDTO mapToResponse(OrderEntity order) {
 
-        return OrderResponse.builder()
+        return OrderResponseDTO.builder()
                 .id(order.getId())
                 .customerId(order.getCustomerId())
                 .productId(order.getProductId())

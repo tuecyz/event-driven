@@ -1,15 +1,15 @@
 package org.example.orderservice.service;
 
-import org.example.orderservice.dto.CreateOrderRequest;
-import org.example.orderservice.dto.OrderResponse;
+import org.example.orderservice.dto.CreateOrderRequestDTO;
+import org.example.orderservice.dto.OrderResponseDTO;
 
 import java.util.List;
 
 public interface OrderService {
 
-    OrderResponse createOrder(CreateOrderRequest request);
+    OrderResponseDTO createOrder(CreateOrderRequestDTO request);
 
-    List<OrderResponse> getAllOrders();
+    List<OrderResponseDTO> getAllOrders();
 
-    OrderResponse getOrderById(Long id);
+    OrderResponseDTO getOrderById(Long id);
 }
