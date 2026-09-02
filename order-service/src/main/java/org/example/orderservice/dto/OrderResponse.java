@@ -1,11 +1,13 @@
 package org.example.orderservice.dto;
 
 import lombok.Builder;
+import lombok.Getter;
 import org.example.orderservice.enums.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Getter
 @Builder
 public class OrderResponse {
 
